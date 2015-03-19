@@ -1,9 +1,3 @@
-'''
-Created on 19/3/2015
-
-@author: Clara
-'''
-
 from random import randint
 
 class Tablero:
@@ -134,29 +128,50 @@ def menu1():
         print "0. Salir"
         opcionMenu1 = int(input())
 
-        tipoGenerico = 'G'
+    tipoGenerico = 'G'
 
     if opcionMenu1==0:
         exit() 
-    elif opcionMenu1==1:
-        tab = Tablero(3,tipoGenerico)
-        #print "Nivel Facil"        
-    elif opcionMenu1==2:
-        print "Nivel Intermedio"
-    elif opcionMenu1==3:
-        print "Nivel Dificil"
-    elif opcionMenu1==4:
+    elif opcionMenu1 == 1:
+        tablero = Tablero(3,tipoGenerico)        
+        mostrarTablero(tablero,"nuevo") 
+    elif opcionMenu1 == 2:
+        tablero = Tablero(4,tipoGenerico)        
+        mostrarTablero(tablero,"nuevo") 
+    elif opcionMenu1 == 3:
+        tablero = Tablero(5,tipoGenerico)        
+        mostrarTablero(tablero,"nuevo") 
+    elif opcionMenu1 == 4:
         print "Bienvenido a los tableros fijos"
-    elif opcionMenu1==5:
+    elif opcionMenu1 == 5:
         print "Bienvenido a Mejores Puntuaciones"
-    elif opcionMenu1==6:
+    elif opcionMenu1 == 6:
         print "Se han borrado las Mejores Puntuaciones"
 
-objTablero = Tablero(3,'D')
-matriz = objTablero.getTableroNuevo()
+def mostrarTablero(tab, tipo):        
+        
+    if tipo == "nuevo":
+        matrix = tab.getTableroNuevo()
+    elif tipo == "actual":
+        matrix = tab.getTablero()
+        
+    contador = 9
+        
+    print "  |  1  2  3  4  5  6  7  8  9        puntos"
+    print "-------------------------------       ------"
+   
+    for i in range(len(matrix)):
+        print str(contador)+" | ",
+        for j in range(len(matrix[0])):
+            if matrix[i][j] == 0:
+                print " ",
+            else:
+                print str(matrix[i][j])+" ",
 
-for i in range(len(matriz)):
-    for j in range(len(matriz[0])):
-        print str(matriz[i][j]),
+        print ''
+        contador = contador-1
 
-    print ''
+
+empezar()
+
+
